@@ -62,6 +62,10 @@ class GooglePlaceAutocomplete extends React.Component {
       bounds: this.getBounds()
     };
 
+    if(this.props.restrictions) {
+      request.componentRestrictions = { country: this.props.restrictions };
+    }
+
     this.autocompleteService.getPlacePredictions(request, data => this.updateDatasource(data));
   }
 
@@ -103,7 +107,11 @@ GooglePlaceAutocomplete.propTypes = {
   onChange: PropTypes.func.isRequired,
   getRef: PropTypes.func,
   types: PropTypes.arrayOf(PropTypes.string),
-  bounds: PropTypes.object
+  bounds: PropTypes.object,
+  restrictions: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.arrayOf(PropTypes.string)
+  ])
 };
 
 GooglePlaceAutocomplete.defaultProps = {
