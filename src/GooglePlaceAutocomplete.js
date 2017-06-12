@@ -84,7 +84,9 @@ class GooglePlaceAutocomplete extends React.Component {
   }
 
   render() {
-    const {location, radius, bounds, types, restrictions, ...autoCompleteProps} = this.props; // eslint-disable-line no-unused-vars
+    const {
+      location, radius, bounds, types, restrictions, ...autoCompleteProps // eslint-disable-line no-unused-vars
+    } = this.props;
 
     return (
       <AutoComplete
